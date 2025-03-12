@@ -3,14 +3,14 @@ import BaseController from "../utils/BaseController.js";
 
 export class RatController extends BaseController {
   constructor() {
-    super()
+    super('api/rats')
     this.router
-      .get('api/rats', this.getRats)
+      .get('', this.getRats)
   }
   async getRats(request, response, next) {
     try {
       const rats = await ratService.getRats()
-      response(rats)
+      response.send(rats)
     } catch (error) {
       next(error)
     }
