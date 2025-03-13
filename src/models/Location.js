@@ -8,5 +8,9 @@ export const LocationSchema = new Schema(
 
 
 
+  },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true }
   }
 )

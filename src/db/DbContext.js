@@ -6,9 +6,9 @@ import { MissionSchema } from '../models/Mission.js';
 
 class DbContext {
   Account = mongoose.model('Account', AccountSchema);
-  Rats = mongoose.model('Rats', RatSchema)
-  Locations = mongoose.model('Locations', LocationSchema)
-  Missions = mongoose.model("Missions", MissionSchema)
+  Rats = mongoose.model('Rat', RatSchema)
+  Locations = mongoose.model('Location', LocationSchema)
+  Missions = mongoose.model("Mission", MissionSchema)
 }
 
 export const dbContext = new DbContext()
