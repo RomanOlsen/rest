@@ -8,17 +8,8 @@ export class MissionController extends BaseController {
     this.router
     .get('', this.getMissions)
     .post('', this.createMission)
-    .get(':ratId', this.getMissionForRat)
   }
-  async getMissionForRat(req, res, next) {
-    try {
-      const ratID = req.params.ratId
-      const mission = await missionService.getMissionForRat(ratID)
-      res.send(mission)
-    } catch (error) {
-      next(error) 
-    }
-  }
+
   async getMissions(request, response, next) {
     try {
       const missions = await missionService.getMissions()
