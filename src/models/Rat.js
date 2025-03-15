@@ -15,4 +15,4 @@ export const RatSchema = new Schema(
   }
 )
 
-// RatSchema.virtual
+RatSchema.virtual('Account', {ref: 'Account', localField: 'ratId', foreignField: '_id', justOne: true })

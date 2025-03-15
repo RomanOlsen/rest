@@ -14,3 +14,5 @@ export const LocationSchema = new Schema(
     toJSON: { virtuals: true }
   }
 )
+
+LocationSchema.virtual('Account', {ref: 'Account', localField: 'locationId', foreignField: '_id', justOne: true })

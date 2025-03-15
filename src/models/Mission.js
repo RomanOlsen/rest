@@ -7,7 +7,7 @@ export const MissionSchema = new Schema(
     year: { type: String, required: true },
     locationId: {type: Schema.ObjectId, required: true, ref: 'Location'},
     ratId: {type: Schema.ObjectId, required: true, ref: 'Rat'},
-    completed: {type: Boolean, required: true}
+    completed: {type: Boolean, required: true, default: true}
 
 
 
@@ -15,9 +15,12 @@ export const MissionSchema = new Schema(
   },
 
   {
-
+    
+      timestamps: true,
+      toJSON: { virtuals: true }
+    
   }
 )
 
-MissionSchema.virtual('Rats', { ref: 'Rat', localField: 'ratId', foreignField: '_id' })
-MissionSchema.virtual('Locations', { ref: 'Location', localField: 'locationId', foreignField: '_id' })
+MissionSchema.virtual('rat', { ref: 'Rat', localField: 'ratId', foreignField: '_id', justOne: true })
+MissionSchema.virtual('location', { ref: 'Location', localField: 'locationId', foreignField: '_id', justOne: true })
