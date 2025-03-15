@@ -2,10 +2,10 @@ import { Schema } from "mongoose";
 
 export const RatSchema = new Schema(
   {
-    name: {type:String, required: true},
-    callsign: {type:String, required: true},
-    picture: {type:String, required: true},
-    specialties: {type:Array, required: true}, // unsure what to put for type
+    name: { type: String, required: true },
+    callsign: { type: String, required: true },
+    picture: { type: String, required: true },
+    specialties: { type: Array, required: true }, // unsure what to put for type
 
 
   },
@@ -15,5 +15,5 @@ export const RatSchema = new Schema(
   }
 )
 
-RatSchema.virtual('Account', {ref: 'Account', localField: 'ratId', foreignField: '_id', justOne: true })
-RatSchema.virtual('Mission', { ref: 'Mission', localField: 'ratId', foreignField: '_id', justOne: true })
+RatSchema.virtual('Account', { ref: 'Account', localField: 'ratId', foreignField: '_id', justOne: true })
+RatSchema.virtual('missions', { ref: 'Mission', localField: '_id', foreignField: 'ratId', justOne: false})

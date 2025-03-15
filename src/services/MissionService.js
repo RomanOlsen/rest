@@ -8,13 +8,15 @@ class MissionService {
     // this.getMissions()
     // const ratNeedingMissions = await ratService.getRatbyID(ratId)
 
-    const mission = await dbContext.Missions.find().populate('rat', '-name -picture').find({ratId: ratId}).populate('location')
-
+    // const mission = await dbContext.Missions.find().populate('rat', '-name -picture').find({ratId: ratId}).populate('location')
+    // const missionsbyRat = await dbContext.Rats.findById(ratId).populate('missions')
+    const lastTry = await dbContext.Missions.find({ratId: ratId})//.populate('rat').populate('location')
+    // const lastTry2 = await dbContext.Missions.find({"ratId": ratId}).populate('rat').populate('location')
     if (ratId == null) {
       throw new BadRequest('invalid id')
     }
 
-    return mission
+    return lastTry
   }
 
 
