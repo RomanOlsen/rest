@@ -6,8 +6,8 @@ export class RatController extends BaseController {
   constructor() {
     super('api/rats')
     this.router
-    .get('', this.getRats)
-    .get(':id/missions', this.getMissionForRat)
+      .get('', this.getRats)
+      .get('/:id/missions', this.getMissionForRat) // NOTE DONT FORGET SLASH
 
   }
 
@@ -17,7 +17,7 @@ export class RatController extends BaseController {
       const mission = await missionService.getMissionForRat(ratId)
       response.send(mission)
     } catch (error) {
-      next(error) 
+      next(error)
     }
   }
 
