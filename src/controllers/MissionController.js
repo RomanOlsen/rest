@@ -6,8 +6,21 @@ export class MissionController extends BaseController {
   constructor() {
     super('api/missions')
     this.router
-    .get('', this.getMissions)
-    .post('', this.createMission)
+      .post('', this.createMission)
+      .put('/:id', this.updateMission)
+      .get('', this.getMissions)
+  }
+
+  async updateMission(request, response, next) {
+    try {
+      const ID = request.params.id
+      const missionData = request.body
+      const mission = await missionService.updateMission(ID, missionData)
+      response.send(mission)
+
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getMissions(request, response, next) {

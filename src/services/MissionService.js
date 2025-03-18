@@ -3,6 +3,18 @@ import { dbContext } from "../db/DbContext.js"
 import { ratService } from "./RatService.js"
 
 class MissionService {
+  async updateMission(ID, updateData) {
+    const mission = await dbContext.Missions.findById(ID).populate('rat')
+    if (ID == null) {
+      throw new BadRequest('invalid id')
+    }
+    //.populate('rat')
+    mission.completed = updateData.completed
+    await mission.save()
+
+
+    return mission
+  }
 
   async getMissionForRat(ratId) {
     // this.getMissions()
